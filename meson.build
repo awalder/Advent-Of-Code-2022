@@ -10,7 +10,7 @@ project(
 FMT = dependency('fmt')
 
 subdir('day1')
-# subdir('day2')
+subdir('day2')
 # subdir('day3')
 # subdir('day4')
 # subdir('day5')
