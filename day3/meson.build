@@ -1,0 +1,2 @@
+executable('day4_part1', ['part1.cpp'], dependencies : [FMT])
+executable('day4_part2', ['part2.cpp'], dependencies : [FMT])
