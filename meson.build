@@ -7,8 +7,18 @@ project(
     ]
 )
 
+INCLUDE = include_directories('include')
+
+cmake = import('cmake')
+benchmark_opts = cmake.subproject_options()
+benchmark_opts.add_cmake_defines({'BENCHMARK_ENABLE_GTEST_TESTS': false})
+BENCHMARK = cmake.subproject('google-benchmark', options : benchmark_opts).dependency('benchmark')
+
 FS = import('fs')
 FMT = dependency('fmt')
+TRACY = subproject('tracy').get_variable('tracy_dep')
+TRACY_SRC = files('src/TracyClient.cpp')
+# BENCHMARK = dependency('benchmark')
 
 foreach num : [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
   dir = f'day@num@'
@@ -18,18 +28,3 @@ foreach num : [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
 
 endforeach
 
-# subdir('day1')
-# subdir('day2')
-# subdir('day3')
-# subdir('day4')
-# subdir('day5')
-# subdir('day6')
-# subdir('day7')
-# subdir('day8')
-# subdir('day9')
-# subdir('day10')
-# subdir('day11')
-# subdir('day12')
-# subdir('day13')
-# subdir('day14')
-# subdir('day15')
